@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>chat-game-ending</title>
+    <link rel="stylesheet" href="./main.css" />
+</head>
+
+<body>
+    <div class="ending-logo-content">
+        <img src="./img/遊戲勝利logo.svg" alt="" class="ending-logo" id="fail"/>
+    </div>
+    <div class="blank"></div>
+    <div>
+        <h2 style="color: rgb(137, 228, 245); margin-left: 10px">我的徽章</h2>
+    </div>
+    <div class="badge-list">
+        <div class="badge-item">
+            <img src="./img/Fishing （標題誇大徽章）.svg" alt="" class="badge" id="fail" />
+        </div>
+        <div class="badge-item">
+            <img src="./img/from_where（沒有出處徽章）.svg" alt="" class="badge" style="scale: 0.1" />
+        </div>
+        <div class="badge-item">
+            <img src="./img/picxxxx.png" alt="" class="badge" style="scale: 0.13" />
+        </div>
+        <div class="badge-item">
+            <img src="./img/xxmatchxx（影音和文字內容不符徽章）.svg" alt="" class="badge" style="scale: 0.13" />
+        </div>
+        <div class="badge-item">
+            <img src="./img/emo（情緒性言論徽章）.svg" alt="" class="badge" style="scale: 0.13; transform: translateY(200px)" />
+        </div>
+    </div>
+    <div class="count-list">
+        <div>
+            <p id="fish">X0</p>
+        </div>
+        <div>
+            <p id="from_where">X0</p>
+        </div>
+        <div>
+            <p id="picxxxx">X0</p>
+        </div>
+        <div>
+            <p id="xxmatchxx">X0</p>
+        </div>
+        <div>
+            <p id="emo">X0</p>
+        </div>
+    </div>
+
+    <div class="about-data">
+        <div class="about-data-block">
+            <h3>關注人數</h3>
+            <h3 id="follower">0人</h3>
+        </div>
+        <div class="about-data-block">
+            <h3>信用度</h3>
+            <h3 id="credit">0</h3>
+        </div>
+    </div>
+
+    <script>
+        //http://127.0.0.1:5500/index.html?fail=0&fish=5&from_where=3&picxxxx=4&xxmatchxx=7&emo=3&follower=3000&credit=-15
+        document.addEventListener("DOMContentLoaded", (event) => {
+            const queryParams = getURLParameters();
+            console.log(queryParams);
+
+            // 這些檢查確保了即使URL中沒有提供某個參數，代碼也不會產生錯誤。
+            if (queryParams.fail === '1') {
+                // 获取徽章图片元素并更改其src属性
+                document.getElementById('fail').src = './img/遊戲失敗logo.svg'; // 更改为实际的失败图片路径
+            }
+            if (queryParams.fish !== null) {
+                document.getElementById('fish').textContent = 'X' + queryParams.fish;
+            }
+            if (queryParams.from_where !== null) {
+                document.getElementById('from_where').textContent = 'X' + queryParams.from_where;
+            }
+            if (queryParams.picxxxx !== null) {
+                document.getElementById('picxxxx').textContent = 'X' + queryParams.picxxxx;
+            }
+            if (queryParams.xxmatchxx !== null) {
+                document.getElementById('xxmatchxx').textContent = 'X' + queryParams.xxmatchxx;
+            }
+            if (queryParams.emo !== null) {
+                document.getElementById('emo').textContent = 'X' + queryParams.emo;
+            }
+            if (queryParams.follower !== null) {
+                document.getElementById('follower').textContent = queryParams.follower + '人';
+            }
+            if (queryParams.credit !== null) {
+                document.getElementById('credit').textContent = queryParams.credit;
+            }
+        });
+
+        function getURLParameters() {
+            const params = new URLSearchParams(window.location.search);
+            const parameters = {
+                fail: params.get('fail'),
+                fish: params.get('fish'),
+                from_where: params.get('from_where'),
+                picxxxx: params.get('picxxxx'), // 確保'picxxxx'是實際的參數名稱
+                xxmatchxx: params.get('xxmatchxx'), // 確保'xxmatchxx'是實際的參數名稱
+                emo: params.get('emo'),
+                follower: params.get('follower'),
+                credit: params.get('credit')
+            };
+            return parameters;
+        }
+
+    </script>
+</body>
+
+</html>
