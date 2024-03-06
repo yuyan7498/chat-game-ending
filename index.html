@@ -54,7 +54,7 @@
     <div class="about-data">
         <div class="about-data-block">
             <h3>關注人數</h3>
-            <h3 id="follower">0人</h3>
+            <h3 id="followers">0人</h3>
         </div>
         <div class="about-data-block">
             <h3>信用度</h3>
@@ -95,7 +95,7 @@
                 document.getElementById('emo').textContent = 'X' + queryParams.emo;
             }
             if (queryParams.follower !== null) {
-                document.getElementById('follower').textContent = queryParams.follower + '人';
+                document.getElementById('followers').textContent = queryParams.followers + '人';
             }
             if (queryParams.credit !== null) {
                 document.getElementById('credit').textContent = queryParams.credit;
@@ -111,7 +111,7 @@
                 picxxxx: params.get('picxxxx'), // 確保'picxxxx'是實際的參數名稱
                 xxmatchxx: params.get('xxmatchxx'), // 確保'xxmatchxx'是實際的參數名稱
                 emo: params.get('emo'),
-                follower: params.get('follower'),
+                followers: params.get('followers'),
                 credit: params.get('credit')
             };
             return parameters;
